@@ -9,9 +9,9 @@ This repository contains MATLAB code for forecasting multivariate time-series da
 
 The figure below shows an example of irregular respiratory-motion forecasting using UORO.
 
-<p align="center"> <img src="prediction_UORO.png" width="60%" alt="External-marker respiratory-motion forecast using UORO"> </p>
+<p align="center"> <img src="prediction_UORO.png" width="70%" alt="External-marker respiratory-motion forecast using UORO"> </p>
 
-<p align="center"> <em>Comparison of the ground-truth position of an external thoraco-abdominal marker moving due to breathing and its forecast using UORO. The horizon is set to 2.0 s and the sampling rate is 10 Hz. Prediction used the x-, y-, and z-coordinates of all three markers as input, but only the z-coordinate of one marker, corresponding approximately to the spine axis, is displayed.</em> </p>
+<p align="center"> <em>Comparison of the ground-truth position of an external thoraco-abdominal marker moving due to breathing and its forecast using UORO. The horizon is set to 2.0 s and the sampling rate is 10 Hz. Prediction used the x-, y-, and z-coordinates of three markers as input, but only the z-coordinate of one marker, corresponding approximately to the spine axis, is displayed.</em> </p>
 
 
 ## Data
