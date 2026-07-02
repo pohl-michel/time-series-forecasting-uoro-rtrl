@@ -1,17 +1,18 @@
 # Multivariate respiratory-motion time-series forecasting using RNNs trained with UORO and RTRL
 
-**Note**: This repository contains the original code supporting my paper on UORO published in 2022 (see ["References"](#references) section). A newer consolidated implementation is available in the [`Time_series_forecasting folder`](https://github.com/pohl-michel/2D-MR-image-prediction/blob/main/Time_series_forecasting/README.md) of the `2D-MR-image-prediction` repository, which contains additional online learning algorithms for RNNs (DNI and SnAp-1), transformer models, and more general evaluation settings.
+**Note**: This repository contains the original code associated with my paper on unbiased online recurrent optimization (UORO) published in 2022 (see ["References"](#references) section). A newer consolidated implementation is available in the [`Time_series_forecasting folder`](https://github.com/pohl-michel/2D-MR-image-prediction/blob/main/Time_series_forecasting/README.md) of the `2D-MR-image-prediction` repository, which covers additional online learning algorithms for recurrent neural networks (RNNs), namely decoupled neural interfaces (DNI) and sparse one-step approximation (SnAp-1), transformer models, and more general evaluation settings.
+
 
 ## Overview
 
-This repository contains MATLAB code for forecasting multivariate time-series data. Specifically, the code implements vanilla RNNs trained online with unbiased online recurrent optimization (UORO) or real-time recurrent learning (RTRL), together with least mean squares (LMS) and ordinary least-squares linear autoregressive baselines. The data provided here consists of the 3D positions of external markers on the chest and abdomen of individuals lying face up during breathing. 
+This repository contains MATLAB code for forecasting multivariate time-series data. Specifically, it implements vanilla RNNs trained online with UORO or real-time recurrent learning (RTRL), together with least mean squares (LMS) and ordinary least-squares linear autoregressive baselines. The data provided here consists of the 3D positions of external markers on the chest and abdomen of individuals lying face up during breathing. 
 
-The figure below gives an example of prediction 2.0s in advance with UORO (the sampling rate is 10Hz). 
+The figure below shows an example of irregular respiratory-motion forecasting using UORO.
 
-![alt text](prediction_UORO.png "prediction with UORO for sequence 4 and a horizon of 2.0s")
+<p align="center"> <img src="prediction_UORO.png" width="60%" alt="External-marker respiratory-motion forecast using UORO"> </p>
 
-Our implementation of RTRL is based on chapter 15 ("Dynamically Driven Recurrent Networks") of the following book :
-Haykin, Simon S. "Neural networks and learning machines/Simon Haykin." (2009).
+<p align="center"> <em>Comparison of the ground-truth position of an external thoraco-abdominal marker moving due to breathing and its forecast using UORO. The horizon is set to 2.0 s and the sampling rate is 10 Hz. Prediction used the x-, y-, and z-coordinates of all three markers as input, but only the z-coordinate of one marker, corresponding approximately to the spine axis, is displayed.</em> </p>
+
 
 ## Data
 
@@ -19,6 +20,7 @@ The data provided in the directories "1. Input time series sequences" and "Origi
 The same data was used and described in the following article:
 Krilavicius, Tomas, et al. “Predicting Respiratory Motion for Real-Time Tumour Tracking in Radiotherapy.” ArXiv:1508.00749 [Physics], Aug. 2015. arXiv.org,  	
 https://doi.org/10.48550/arXiv.1508.00749.
+
 
 ## How to run
 
@@ -47,15 +49,20 @@ Calculations are faster with the GPU when using RTRL with a relatively high numb
 
 "convert_csv_to_mat.m" converts the original csv data from the article by Krilavicius et al. in the "Original data" folder into the "data.mat" files in the "Input time series sequences" folder that "prediction_main.m" and "hyperparameter_optimization_main.m" can use.
 
+
 ## References
 
 This code supports the claims in the following research article:
 
-Michel Pohl, Mitsuru Uesaka, Hiroyuki Takahashi, Kazuyuki Demachi, Ritu Bhusal Chhatkuli, "Prediction of the Position of External Markers Using a Recurrent Neural Network Trained With Unbiased Online Recurrent Optimization for Safe Lung Cancer Radiotherapy", Computer Methods and Programs in Biomedicine (2022): 106908. [[Published version]](https://doi.org/10.1016/j.cmpb.2022.106908) [[arXiv]](https://doi.org/10.48550/arXiv.2106.01100)
+Michel Pohl, Mitsuru Uesaka, Hiroyuki Takahashi, Kazuyuki Demachi, Ritu Bhusal Chhatkuli, "Prediction of the Position of External Markers Using a Recurrent Neural Network Trained With Unbiased Online Recurrent Optimization for Safe Lung Cancer Radiotherapy", Computer Methods and Programs in Biomedicine (2022): 106908. [[Published version]](https://doi.org/10.1016/j.cmpb.2022.106908) [[arXiv]](https://doi.org/10.48550/arXiv.2106.01100).
 
-Please consider citing our article if you use this code in your research. An accessible summary of this work is available as a Towards Data Science Editors’ Pick article, also mirrored on my personal blog:
+The UORO algorithm was introduced in:
 
-Michel Pohl, "Predicting respiratory motion using online learning of recurrent neural networks for safer lung radiotherapy", Towards Data Science (2022) [[Medium]](https://medium.com/towards-data-science/forecasting-respiratory-motion-using-online-learning-of-rnns-for-safe-radiotherapy-bdf4947ad22f) [[Personal blog]](https://pohl-michel.github.io/blog/articles/predicting-respiratory-motion-online-learning-rnn/article.html)
+Corentin Tallec and Yann Ollivier, "Unbiased Online Recurrent Optimization," International Conference On Learning Representation, 2018 [[arXiv]](https://doi.org/10.48550/arXiv.1702.05043).
+
+Please cite the relevant article(s) if you use this code in your research. An accessible summary of this work is available as a Towards Data Science Editors’ Pick article, also mirrored on my personal blog:
+
+Michel Pohl, "Predicting respiratory motion using online learning of recurrent neural networks for safer lung radiotherapy", Towards Data Science (2022) [[Medium]](https://medium.com/towards-data-science/forecasting-respiratory-motion-using-online-learning-of-rnns-for-safe-radiotherapy-bdf4947ad22f) [[Personal blog]](https://pohl-michel.github.io/blog/articles/predicting-respiratory-motion-online-learning-rnn/article.html).
 
 ## License
 
